@@ -1,0 +1,166 @@
+/* base.css — Resets, tokens, and foundation for Sotta & Briggs */
+
+:root {
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.9rem  + 0.5vw,  1.125rem);
+  --text-lg:   clamp(1.125rem, 0.95rem + 0.85vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1rem    + 1.5vw,  2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+  --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+}
+
+:root {
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+}
+
+:root, [data-theme="light"] {
+  --color-bg:             #fdfcfa;
+  --color-surface:        #f4f2ef;
+  --color-surface-2:      #edeae6;
+  --color-surface-offset: #f0ede9;
+  --color-divider:        #ddd9d3;
+  --color-border:         #d0cbc4;
+  --color-text:           #1a1a1a;
+  --color-text-muted:     #6b6b6b;
+  --color-text-faint:     #a3a3a3;
+  --color-text-inverse:   #fdfcfa;
+  --color-primary:        #b87333;
+  --color-primary-hover:  #a0622b;
+  --color-primary-active: #8a5424;
+  --color-primary-highlight: rgba(184, 115, 51, 0.12);
+  --color-charcoal:       #2a2a2a;
+  --color-charcoal-light: #3a3a3a;
+  --color-error:          #a13544;
+  --color-success:        #437a22;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 1px 2px rgba(42, 42, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(42, 42, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(42, 42, 42, 0.12);
+  --content-narrow: 640px;
+  --content-default: 960px;
+  --content-wide: 1200px;
+  --content-full: 100%;
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+}
+
+[data-theme="dark"] {
+  --color-bg:             #1a1a1a;
+  --color-surface:        #222222;
+  --color-surface-2:      #2a2a2a;
+  --color-surface-offset: #1e1e1e;
+  --color-divider:        #333333;
+  --color-border:         #3d3d3d;
+  --color-text:           #e8e6e2;
+  --color-text-muted:     #9a9a9a;
+  --color-text-faint:     #666666;
+  --color-text-inverse:   #1a1a1a;
+  --color-primary:        #d4924e;
+  --color-primary-hover:  #e0a565;
+  --color-primary-active: #c07d3a;
+  --color-primary-highlight: rgba(212, 146, 78, 0.15);
+  --color-charcoal:       #111111;
+  --color-charcoal-light: #1a1a1a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg:             #1a1a1a;
+    --color-surface:        #222222;
+    --color-surface-2:      #2a2a2a;
+    --color-surface-offset: #1e1e1e;
+    --color-divider:        #333333;
+    --color-border:         #3d3d3d;
+    --color-text:           #e8e6e2;
+    --color-text-muted:     #9a9a9a;
+    --color-text-faint:     #666666;
+    --color-text-inverse:   #1a1a1a;
+    --color-primary:        #d4924e;
+    --color-primary-hover:  #e0a565;
+    --color-primary-active: #c07d3a;
+    --color-primary-highlight: rgba(212, 146, 78, 0.15);
+    --color-charcoal:       #111111;
+    --color-charcoal-light: #1a1a1a;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  hanging-punctuation: first last;
+  scroll-padding-top: var(--space-20);
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.6;
+  font-family: var(--font-body, sans-serif);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+ul[role="list"], ol[role="list"] { list-style: none; }
+input, button, textarea, select { font: inherit; color: inherit; }
+h1, h2, h3, h4, h5, h6 { text-wrap: balance; line-height: 1.15; font-family: var(--font-display); }
+p, li, figcaption { text-wrap: pretty; max-width: 72ch; }
+::selection { background: var(--color-primary-highlight); color: var(--color-text); }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button { cursor: pointer; background: none; border: none; }
+table { border-collapse: collapse; width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
